@@ -1,2 +1,2 @@
-# asteroid
-Mis practicas de Javascript
+# Asteroid
+Juego de Asteroides basado en JS y Canvas html
