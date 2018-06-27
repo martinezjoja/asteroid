@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game Asteroid</title>
+</head>
+<body>
+  <h3>Game</h3>
+  <canvas id="game" width="700" height="500"></canvas>
+  <script>
+    const FPS = 30;
+    const SHIP_SIZE = 30;
+    var gcanvas = document.getElementById("game");
+    var ctx = gcanvas.getContext("2d");
+    //configuramos el loop del juego
+    setInterval(update, 1000 / FPS);
+    var ship = {
+      x: gcanvas.width / 2,
+      y: gcanvas.height /2,
+      r: SHIP_SIZE / 2,
+      a: 90 / 100 * Math.PI //convertimos a Radio
+
+    }
+    function update(){
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, gcanvas.width, gcanvas.height);
+      //pintamos el triagulo de la nave
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = SHIP_SIZE / 20;
+      ctx.beginPath();
+      ctx.moveTo( // punta de la nave
+          ship.x + ship.r * Math.cos(ship.a),
+          ship.x - ship.r * Math.cos(ship.a),
+      );
+      ctx.lineTo(
+        ship.x - ship.r * (Math.cos(ship.a) + Math.sin(ship.a)),
+        ship.x + ship.r * Math.sin(ship.a) + Math.cos(ship.a),
+      )
+      ctx.stroke();
+      //pintamos la nave
+      //rotamos la nave
+      //movemos la nave
+    }
+  </script>
+</body>
+</html>
